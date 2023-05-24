@@ -10,20 +10,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // Define the default text theme with a specific font size
+    final textTheme = Theme.of(context).textTheme.copyWith(
+      bodyText1: TextStyle(fontSize: 16.0), // Set the desired font size
+      // Add more text styles as needed
+    );
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.green,
+        textTheme: textTheme, // Apply the custom text theme
+
+
+        primarySwatch: Colors.blueGrey,
       ),
+
 
       home: const MyHomePage(title: 'ID Card'),
     );
@@ -92,16 +92,19 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Container(
 
-                  color: Colors.green,
+                  color: Color.fromRGBO( 6,107,84,1),
                   width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.only(top: 15),
+
                   child: Column(
 
                     children: [
-                      Image.asset('assets/images/IUT_Logo.png', width : 100, height: 100),
+                      Image.asset('assets/images/IUT_Logo.png', width : 90, height: 90),
                       const Text('ISLAMIC UNIVERSITY OF TECHNOLOGY',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 15.0,
+                          fontSize: 18.0,
+                          color: Colors.white,
                         ),
                       ),
                       SizedBox(height: 70)
@@ -111,13 +114,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 Positioned(
-                  bottom : -60,
+                  bottom : -70,
                   child: Container(
-                  height: 120.0,
-                  width: 120.0,
+                  height: 140.0,
+                  width: 140.0,
+                  padding: EdgeInsets.symmetric(horizontal: 40,vertical: 40),
 
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                     // color: const Color(0x07a556),
+                      color: Color.fromRGBO( 6,107,84,1),
+                      width: 10,
+
+                    ),
+                    image: const DecorationImage(
                       image: AssetImage(
                           'assets/images/profile.png'),
                       fit: BoxFit.fill,
@@ -130,94 +140,163 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
 
+            const Padding(
+                padding: EdgeInsets.all(10)),
 
-            // Container(
-            //   height: 120.0,
-            //   width: 120.0,
-            //   decoration: const BoxDecoration(
-            //
-            //     image: DecorationImage(
-            //       image: AssetImage(
-            //           'assets/images/profile.png'),
-            //       fit: BoxFit.fill,
-            //     ),
-            //     shape: BoxShape.rectangle,
-            //   ),
-            // ),
+               Row(
 
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-              children : const [
-                Icon(Icons.vpn_key),
-              Text(' Student ID'),
-              ]
-              ),
+                 mainAxisAlignment: MainAxisAlignment.center,
+                 children: [
+                   Container(
+                     alignment: Alignment.center,
+                     padding: EdgeInsets.symmetric(vertical: 80, horizontal: 0),
+                     // decoration: BoxDecoration(
+                     //   border: Border.all(
+                     //     // color: const Color(0x07a556),
+                     //     color: Colors.green,
+                     //     width: 10,
+                     //   ),
+                     // ),
+                     child: Column(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                     children: [
+                       Row(
+                         mainAxisAlignment: MainAxisAlignment.start,
+                         crossAxisAlignment: CrossAxisAlignment.start,
+                         children : const [
+                           Icon(Icons.vpn_key),
+                           Text(' Student ID'),
+                         ]
+                     ),
 
-              Container(
-                  decoration: const BoxDecoration(
-                  color: Colors.green,
-                    border: Border(
-                    )
-                  ),
-                child: const Text('190041114'),
-              ),
+                   const Padding(
+                       padding: EdgeInsets.all(3)),
 
 
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children : const [
-                  Icon(Icons.account_circle
-                  ),
-                  Text(' Student Name'),
-                ]
+                   Row(
+                     children: [
+
+                       Container(
+                         padding: EdgeInsets.only(right: 25, left: 3),
+                         decoration: const BoxDecoration(
+                             color: Color.fromRGBO( 6,107,84,1),
+                             shape: BoxShape.rectangle,
+                             border: Border(
+                             ),
+                             borderRadius: BorderRadius.all(Radius.circular(10))
+                         ),
+                         child: Row(
+                           children: const [Icon(Icons.circle,
+                             color: Colors.blue,
+                           ),
+                             Text('190041114', style: TextStyle(
+                               fontWeight: FontWeight.bold,
+                               color: Colors.white,
+                             ),),
+                           ],
+                         ),
+
+                       ),
+                     ],
+                   ),
+
+                       const Padding(
+                           padding: EdgeInsets.all(3)),
+
+                   Row(
+                       mainAxisAlignment: MainAxisAlignment.start,
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children : const [
+                         Icon(Icons.account_circle
+                         ),
+                         Text(' Student Name'),
+                       ]
+                   ),
+
+                       const Padding(
+                           padding: EdgeInsets.all(3)),
+
+                   const Text('FARZANA CHOWDHURY',
+                     style: TextStyle(
+                       fontWeight: FontWeight.bold,
+                       fontSize: 15.0,
+                     ),
+                   ),
+
+                       const Padding(
+                           padding: EdgeInsets.all(3)),
+
+                   Row(
+                       mainAxisAlignment: MainAxisAlignment.start,
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children : const [
+                         Icon(Icons.school),
+                         Text(' Program BSc in CSE'),
+                       ]
+                   ),
+
+                       const Padding(
+                           padding: EdgeInsets.all(3)),
+
+
+                   Row(
+                       mainAxisAlignment: MainAxisAlignment.start,
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children : const [
+                         Icon(Icons.supervised_user_circle
+                         ),
+                         Text(' Department CSE'),
+                       ]
+                   ),
+
+                       const Padding(
+                           padding: EdgeInsets.all(3)),
+
+
+                   Row(
+                       mainAxisAlignment: MainAxisAlignment.start,
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children : const [
+                         Icon(Icons.pin_drop
+                         ),
+                         Text(' Bangladesh',
+                           style: TextStyle(
+                             fontWeight: FontWeight.bold,
+                           ),),
+                       ]
+                   ),
+                   ]),
+                   ),
+                 ],
+               ),
+
+
+
+
+          const Spacer(),
+          Container(
+            color: Color.fromRGBO( 6,107,84,1),
+            width: MediaQuery.of(context).size.width,
+            padding: const EdgeInsets.only(top: 8, bottom: 2),
+            //height: 10,
+            child : Column(
+                children: const <Widget>[
+          Text('A subsidiary organ of OIC', style: TextStyle(
+            color: Colors.white,
+            fontStyle: FontStyle.italic,
+          ),),
+            ]
             ),
+          )
 
-            const Text('FARZANA CHOWDHURY',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 15.0,
-              ),
-            ),
-
-Row(
-  mainAxisAlignment: MainAxisAlignment.center,
-  crossAxisAlignment: CrossAxisAlignment.center,
-  children : const [
-  Icon(Icons.school),
-    Text(' Program BSc in CSE'),
-  ]
-),
-
-
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children : const [
-                  Icon(Icons.supervised_user_circle
-                  ),
-                  Text(' Department CSE'),
-                ]
-            ),
-
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children : const [
-                  Icon(Icons.pin_drop
-                  ),
-                  Text(' Bangladesh',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),),
-                ]
-            ),
-
-           //Text
           ],
+
+
         ),
+
+
       ),
+
 
     );
   }
